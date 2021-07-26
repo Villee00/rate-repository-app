@@ -2,16 +2,17 @@ import React from 'react';
 import { View, StyleSheet, Pressable } from 'react-native';
 import Constants from 'expo-constants';
 import Text from './Text';
+import theme from '../theme';
 
 const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: "#24292e"
+    backgroundColor: theme.colors.bar
   },
   menuText: {
     color: "white",
     fontSize:20,
-    margin:25
+    margin:20
   }
 });
 
