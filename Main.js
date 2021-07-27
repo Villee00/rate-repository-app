@@ -4,12 +4,14 @@ import RepositoryList from './src/components/RepositoryList';
 import AppBar from './src/components/AppBar';
 import { Redirect, Route, Switch } from 'react-router-native';
 import SignIn from './src/components/SignIn';
+import theme from './src/theme';
 
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     flexShrink: 1,
-    display:'flex'
+    display:'flex',
+    backgroundColor: theme.colors.background
   },
 });
 

@@ -10,7 +10,8 @@ const style = StyleSheet.create({
   },
   mainContainer:{
     paddingBottom:20,
-    paddingTop:5
+    paddingTop:5,
+    backgroundColor:'white'
   }
 });
 

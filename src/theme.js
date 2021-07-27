@@ -3,7 +3,8 @@ const theme = {
     textPrimary: '#24292e',
     textSecondary: '#586069',
     primary: '#0366d6',
-    bar: '#24292e'
+    bar: '#24292e',
+    background: '#7ad3ff'
   },
   fontSizes: {
     body: 14,
@@ -15,8 +16,7 @@ const theme = {
   fontWeights: {
     normal: '400',
     bold: '700',
-  },
-
+  }
 };
 
 export default theme;
