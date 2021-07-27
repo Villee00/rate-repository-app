@@ -1,13 +1,15 @@
 import React from 'react';
-import { View, StyleSheet, Pressable } from 'react-native';
+import { View, StyleSheet, Pressable, ScrollView } from 'react-native';
 import Constants from 'expo-constants';
 import Text from './Text';
 import theme from '../theme';
+import { Link } from 'react-router-native';
 
 const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: theme.colors.bar
+    backgroundColor: theme.colors.bar,
+    flexDirection:'row'
   },
   menuText: {
     color: "white",
@@ -18,9 +20,14 @@ const styles = StyleSheet.create({
 
 const AppBar = () => {
   return <View style={styles.container}>
-    <Pressable>
-      <Text fontWeight="bold" style={styles.menuText}>Repositories</Text>
-    </Pressable>
+    <ScrollView horizontal>
+      <Link to='/'>
+        <Text fontWeight="bold" style={styles.menuText}>Repositories</Text>
+      </Link>
+      <Link to='/signin'>
+        <Text fontWeight="bold" style={styles.menuText}>Sign in</Text>
+      </Link>
+    </ScrollView>
   </View>;
 };
 
