@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Pressable, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import Constants from 'expo-constants';
 import Text from './Text';
 import theme from '../theme';
@@ -9,12 +9,12 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
     backgroundColor: theme.colors.bar,
-    flexDirection:'row'
+    flexDirection: 'row'
   },
   menuText: {
     color: "white",
-    fontSize:20,
-    margin:20
+    fontSize: 20,
+    margin: 20
   }
 });
 

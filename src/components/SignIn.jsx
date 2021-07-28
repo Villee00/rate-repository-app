@@ -8,7 +8,7 @@ import FormikTextInput from './FormikTextInput';
 const style = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    padding:15
+    padding: 15
   },
 });
 
