@@ -1,21 +1,18 @@
 import { gql } from "@apollo/client";
 
-export const GET_REPOSITORIES = gql`
-  query {
-    repositories {
-      edges {
-        node {
-          ownerName
-          ownerAvatarUrl
-          ownerName
-          language
-          description
-          stargazersCount
-          forksCount
-          reviewCount
-          ratingAverage
-        }
-      }
-    }
+export const CREATE_USER = gql`
+mutation CreateUser($username: String!, $password: String!){
+  createUser(user: { username: $username, password: $password }) {
+    id
+    username
   }
+}
+`;
+
+export const SIGNIN_USER = gql`
+mutation Authorize($username: String!, $password: String!){
+  authorize(credentials: { username: $username, password: $password }) {
+    accessToken
+  }
+}
 `;
