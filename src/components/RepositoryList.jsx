@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
 import useRepositories from '../hooks/useRepositories';
 import RepositoryItem from './RepositoryItem';
@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#e1e4e8'
   }
 });
-
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
