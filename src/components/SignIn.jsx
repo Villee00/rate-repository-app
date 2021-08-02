@@ -31,7 +31,7 @@ const SignIn = () => {
   const [signIn] = useSignIn();
   let history = useHistory();
 
-  const onSubmit = async (values, isSubmitting) => {
+  const onSubmit = async (values) => {
     const { username, password } = values;
     try {
       await signIn({ username, password });

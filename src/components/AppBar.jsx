@@ -3,7 +3,7 @@ import { View, StyleSheet, ScrollView, Pressable } from 'react-native';
 import Constants from 'expo-constants';
 import Text from './Text';
 import theme from '../theme';
-import { Link, useHistory } from 'react-router-native';
+import { Link } from 'react-router-native';
 import { useApolloClient, useQuery } from '@apollo/client';
 import {  GET_AUTHORIZEDUSER } from '../graphql/queries';
 import useAuthStorage from '../hooks/useAuthStorage';
@@ -25,7 +25,6 @@ const AppBar = () => {
   const {data, loading, refetch} = useQuery(GET_AUTHORIZEDUSER);
   const authStorage = useAuthStorage();
   const apolloClient = useApolloClient();
-  
 
   if(loading){
     return(<></>);
