@@ -1,9 +1,10 @@
 import { Linking } from 'expo';
 import React from 'react';
-import { Button, Pressable, StyleSheet, View } from 'react-native';
+import { Button, FlatList, Pressable, StyleSheet, View } from 'react-native';
 import { useHistory } from 'react-router-native';
 import RepositoryStats from './RepositoryItemComponents/RepositoryStats';
 import RepositoryInfo from './RepositoryItemComponents/RespositoryInfo';
+import ReviewItem from './ReviewItem';
 import Text from './Text';
 
 const style = StyleSheet.create({
@@ -16,15 +17,15 @@ const style = StyleSheet.create({
     paddingTop: 5,
     backgroundColor: 'white'
   },
-  buttonView:{
-    margin:15
+  buttonView: {
+    margin: 15
   }
 });
 
 const RepositoryItem = ({ repository, isSingle }) => {
   let history = useHistory();
   if (!isSingle) {
-    const onPress = () =>{
+    const onPress = () => {
       history.push(`/${repository.id}`);
 
     };
@@ -46,6 +47,8 @@ const RepositoryItem = ({ repository, isSingle }) => {
     const onPress = () => {
       Linking.openURL(repository.url);
     };
+    const reviews = repository.reviews.edges;
+    console.log(reviews);
     return (
       <View testID="repositoryItem" style={style.mainContainer}>
         <RepositoryInfo repository={repository} />
@@ -56,7 +59,7 @@ const RepositoryItem = ({ repository, isSingle }) => {
           <RepositoryStats testID="Rating" label="Rating" amount={repository.ratingAverage} />
         </View>
         <View style={style.buttonView}>
-        <Button onPress={onPress} title="Open on github"/>
+          <Button onPress={onPress} title="Open on github" />
         </View>
       </View>
     );
