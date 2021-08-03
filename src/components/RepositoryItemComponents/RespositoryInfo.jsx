@@ -41,9 +41,9 @@ const RepositoryInfo = ({ repository }) => {
         }} />
       </View>
       <View style={infoStyle.infoContainer}>
-        <Text fontSize='subheading' fontWeight='bold'>{repository.fullName}</Text>
-        <Text>{repository.description}</Text>
-        <Text style={infoStyle.language}>{repository.language}</Text>
+        <Text testID="fullName" fontSize='subheading' fontWeight='bold'>{repository.fullName}</Text>
+        <Text testID="description">{repository.description}</Text>
+        <Text testID="language" style={infoStyle.language}>{repository.language}</Text>
       </View>
     </View>
   );

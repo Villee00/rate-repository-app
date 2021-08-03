@@ -18,13 +18,13 @@ const style = StyleSheet.create({
 const RepositoryItem = ({ repository }) => {
   if (repository.forksCount)
     return (
-      <View style={style.mainContainer}>
+      <View testID="repositoryItem" style={style.mainContainer}>
         <RepositoryInfo repository={repository} />
         <View style={style.statsContainer}>
-          <RepositoryStats label="Stars" amount={repository.stargazersCount} />
-          <RepositoryStats label="Forks" amount={repository.forksCount} />
-          <RepositoryStats label="Reviews" amount={repository.reviewCount} />
-          <RepositoryStats label="Rating" amount={repository.ratingAverage} />
+          <RepositoryStats testID="Stars"  label="Stars"  amount={repository.stargazersCount} />
+          <RepositoryStats testID="Forks"  label="Forks"  amount={repository.forksCount} />
+          <RepositoryStats testID="Reviews"label="Reviews" amount={repository.reviewCount} />
+          <RepositoryStats testID="Rating" label="Rating"  amount={repository.ratingAverage} />
         </View>
       </View>
     );

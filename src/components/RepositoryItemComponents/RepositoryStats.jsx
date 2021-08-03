@@ -12,13 +12,13 @@ const statsStyle = StyleSheet.create({
   }
 });
 
-const RepositoryStats = ({ label, amount }) => {
+const RepositoryStats = ({ testID, label, amount }) => {
   let amountText = amount;
   if (amount >= 1000) {
     amountText = Math.round(amount / 100) / 10 + "k";
   }
   return (
-    <View style={statsStyle.container}>
+    <View style={statsStyle.container} testID={testID}>
       <Text fontWeight='bold'>{amountText}</Text>
       <Text>{label}</Text>
     </View>
