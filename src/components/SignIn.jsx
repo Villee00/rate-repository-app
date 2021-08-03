@@ -27,6 +27,25 @@ const initialValues = {
   username: '',
   password: ''
 };
+
+export const SignInFrom = ({onSubmit}) =>{
+  return (
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={validationSchema} >
+      {({ handleSubmit }) => (
+        <View style={style.container}>
+          <FormikTextInput testID="username" name="username" placeholder="username" />
+          <FormikTextInput testID="password" name="password" placeholder="password" secureTextEntry />
+          <Button testID="submitButton" onPress={handleSubmit} title="Sign in" />
+        </View>
+      )}
+
+    </Formik>
+  );
+};
+
 const SignIn = () => {
   const [signIn] = useSignIn();
   let history = useHistory();
@@ -40,20 +59,9 @@ const SignIn = () => {
       console.log(error);
     }
   };
-  return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={onSubmit}
-      validationSchema={validationSchema} >
-      {({ handleSubmit }) => (
-        <View style={style.container}>
-          <FormikTextInput name="username" placeholder="username" />
-          <FormikTextInput name="password" placeholder="password" secureTextEntry />
-          <Button onPress={handleSubmit} title="Sign in" />
-        </View>
-      )}
 
-    </Formik>
+  return (
+    <SignInFrom onSubmit={onSubmit}/>
   );
 };
 
