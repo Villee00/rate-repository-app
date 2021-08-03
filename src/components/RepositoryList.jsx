@@ -18,7 +18,7 @@ export const RepositoryListContainer = ({ repositories }) => {
     : [];
 
     const renderItem = ({ item }) => (
-      <RepositoryItem repository={item} />
+      <RepositoryItem isSingle={false} repository={item} />
     );
     return (
       <FlatList
