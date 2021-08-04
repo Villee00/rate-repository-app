@@ -2,16 +2,16 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-native";
 import { GET_REPOSITORY } from "../graphql/queries";
-import { FlatList } from "react-native";
+import { FlatList, SegmentedControlIOS } from "react-native";
 import ReviewItem from "./ReviewItem";
 import RepositoryItem from "./RepositoryItem";
 import { ItemSeparator } from "./RepositoryList";
 
 const RepositoryDetails = () =>{
   const {id} = useParams();
-  
   const {loading, error, data} = useQuery(GET_REPOSITORY,{
-    variables: {id}
+    variables: {id},
+    fetchPolicy: 'cache-and-network'
   });
 
   if(loading) return null;
@@ -20,8 +20,8 @@ const RepositoryDetails = () =>{
   return(
     <FlatList
     data={reviews}
-    renderItem={({item}) => <ReviewItem review={item.node} key={item.node.id}/>}
-    keyExtractor={({ id }) => id}
+    renderItem={({item}) => <ReviewItem review={item.node}/>}
+    keyExtractor={ ({node})=> node.id}
     ListHeaderComponent={() => <RepositoryItem repository={repository} isSingle={true}/>}
     ItemSeparatorComponent={ItemSeparator}
     />

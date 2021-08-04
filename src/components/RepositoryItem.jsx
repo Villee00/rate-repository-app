@@ -4,8 +4,6 @@ import { Button, FlatList, Pressable, StyleSheet, View } from 'react-native';
 import { useHistory } from 'react-router-native';
 import RepositoryStats from './RepositoryItemComponents/RepositoryStats';
 import RepositoryInfo from './RepositoryItemComponents/RespositoryInfo';
-import ReviewItem from './ReviewItem';
-import Text from './Text';
 
 const style = StyleSheet.create({
   statsContainer: {
@@ -26,7 +24,7 @@ const RepositoryItem = ({ repository, isSingle }) => {
   let history = useHistory();
   if (!isSingle) {
     const onPress = () => {
-      history.push(`/${repository.id}`);
+      history.push(`/repository/${repository.id}`);
 
     };
     return (
@@ -48,7 +46,6 @@ const RepositoryItem = ({ repository, isSingle }) => {
       Linking.openURL(repository.url);
     };
     const reviews = repository.reviews.edges;
-    console.log(reviews);
     return (
       <View testID="repositoryItem" style={style.mainContainer}>
         <RepositoryInfo repository={repository} />

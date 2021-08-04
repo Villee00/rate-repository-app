@@ -2,10 +2,11 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import RepositoryList from './src/components/RepositoryList';
 import AppBar from './src/components/AppBar';
-import { Redirect, Route, Switch } from 'react-router-native';
+import {  Route, Switch } from 'react-router-native';
 import SignIn from './src/components/SignIn';
 import theme from './src/theme';
 import RepositoryDetails from './src/components/RepositoryDetails';
+import RepositoryReviewForm from './src/components/RepositoryReviewForm';
 
 const styles = StyleSheet.create({
   container: {
@@ -27,10 +28,13 @@ const Main = () => {
         <Route path='/signin' exact>
           <SignIn/>
         </Route>
-        <Route path='/:id'>
+        <Route path='/repository/:id'>
           <RepositoryDetails/>
         </Route>
-        <Redirect to='/'/>
+        <Route path='/reviewForm'>
+          <RepositoryReviewForm/>
+        </Route>
+        
       </Switch>
     </View>
   );
