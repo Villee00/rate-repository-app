@@ -3,7 +3,7 @@ import { View, StyleSheet, ScrollView, Pressable } from 'react-native';
 import Constants from 'expo-constants';
 import Text from './Text';
 import theme from '../theme';
-import { Link } from 'react-router-native';
+import { Link, useHistory } from 'react-router-native';
 import { useApolloClient, useQuery } from '@apollo/client';
 import { GET_AUTHORIZEDUSER } from '../graphql/queries';
 import useAuthStorage from '../hooks/useAuthStorage';
@@ -22,10 +22,11 @@ const styles = StyleSheet.create({
 });
 
 const AppBar = () => {
-  const { data, loading, refetch } = useQuery(GET_AUTHORIZEDUSER);
+  const { data, loading } = useQuery(GET_AUTHORIZEDUSER);
   const authStorage = useAuthStorage();
   const apolloClient = useApolloClient();
   const authorizedUser = data ? data.authorizedUser : undefined;
+  let history = useHistory();
 
   if (loading) {
     return null;
@@ -34,27 +35,48 @@ const AppBar = () => {
   const signOut = async () => {
     await authStorage.removeAccessToken();
     await apolloClient.resetStore();
-    await refetch();
+    history.push('/');
   };
 
+  //Check if user is logged in
+  if (authorizedUser) {
+    return (
+      <View style={styles.container}>
+        <ScrollView horizontal>
+          <Link to='/'>
+            <Text fontWeight="bold" style={styles.menuText}>Repositories</Text>
+          </Link>
 
-  return <View style={styles.container}>
-    <ScrollView horizontal>
-      <Link to='/'>
-        <Text fontWeight="bold" style={styles.menuText}>Repositories</Text>
-      </Link>
+          <Link to='/reviewForm'>
+            <Text fontWeight="bold" style={styles.menuText}>Create review</Text>
+          </Link>
 
-      {authorizedUser ? <Link to='/reviewForm'>
-        <Text fontWeight="bold" style={styles.menuText}>Create review</Text>
-      </Link>:null}
+          <Pressable onPress={signOut}>
+            <View>
+            <Text fontWeight="bold" style={styles.menuText}>Signout</Text>
+            </View>
+          </Pressable>
+        </ScrollView>
+      </View>);
+  }
+  else {
+    return (
+      <View style={styles.container}>
+        <ScrollView horizontal>
+          <Link to='/'>
+            <Text fontWeight="bold" style={styles.menuText}>Repositories</Text>
+          </Link>
 
-      {authorizedUser ? <Pressable onPress={signOut}><Text fontWeight="bold" style={styles.menuText}>Signout</Text></Pressable> :
-        <Link to='/signin'>
-          <Text fontWeight="bold" style={styles.menuText}>Sign in</Text>
-        </Link>}
+          <Link to='/signin'>
+            <Text fontWeight="bold" style={styles.menuText}>Sign in</Text>
+          </Link>
 
-    </ScrollView>
-  </View>;
+          <Link to='/signup'>
+            <Text fontWeight="bold" style={styles.menuText}>Sign up</Text>
+          </Link>
+        </ScrollView>
+      </View>);
+  }
 };
 
 export default AppBar;

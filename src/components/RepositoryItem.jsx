@@ -1,6 +1,6 @@
 import { Linking } from 'expo';
 import React from 'react';
-import { Button, FlatList, Pressable, StyleSheet, View } from 'react-native';
+import { Button, Pressable, StyleSheet, View } from 'react-native';
 import { useHistory } from 'react-router-native';
 import RepositoryStats from './RepositoryItemComponents/RepositoryStats';
 import RepositoryInfo from './RepositoryItemComponents/RespositoryInfo';

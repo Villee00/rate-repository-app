@@ -5,6 +5,7 @@ import { Button, StyleSheet, View } from "react-native";
 import { useHistory } from "react-router-native";
 import * as yup from 'yup';
 import { CREATE_REVIEW } from "../graphql/mutations";
+import useCreateReview from "../hooks/useCreateReview";
 
 import FormikTextInput from "./FormikTextInput";
 
@@ -40,16 +41,14 @@ const validation = yup.object().shape({
 
 const RepositoryReviewForm = () => {
   let history = useHistory();
-  const [mutate] = useMutation(CREATE_REVIEW);
+  const [createReview, result] = useCreateReview();
+
   const onSubmit = async (values) => {
     let { repositoryName, ownerName, rating, text } = values;
-
     rating = parseInt(rating);
 
     try {
-      const {data} = await mutate({
-        variables: { repositoryName, ownerName, rating, text }
-      });
+      const {data} = await createReview({ repositoryName, ownerName, rating, text });
       history.push(`/repository/${data.createReview.repositoryId}`);
     } catch (e) {
       console.log(e);

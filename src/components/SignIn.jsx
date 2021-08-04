@@ -6,13 +6,8 @@ import { View, StyleSheet, Button } from 'react-native';
 import FormikTextInput from './FormikTextInput';
 import useSignIn from '../hooks/useSignIn';
 import { useHistory } from 'react-router-native';
+import theme from '../theme';
 
-const style = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
-    padding: 15
-  },
-});
 
 const validationSchema = yup.object().shape({
   username: yup
@@ -35,13 +30,12 @@ export const SignInFrom = ({onSubmit}) =>{
       onSubmit={onSubmit}
       validationSchema={validationSchema} >
       {({ handleSubmit }) => (
-        <View style={style.container}>
-          <FormikTextInput testID="username" name="username" placeholder="username" />
-          <FormikTextInput testID="password" name="password" placeholder="password" secureTextEntry />
+        <View style={theme.container}>
+          <FormikTextInput testID="username" name="username" placeholder="Username" />
+          <FormikTextInput testID="password" name="password" placeholder="Password" secureTextEntry />
           <Button testID="submitButton" onPress={handleSubmit} title="Sign in" />
         </View>
       )}
-
     </Formik>
   );
 };

@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-native";
 import { GET_REPOSITORY } from "../graphql/queries";
-import { FlatList, SegmentedControlIOS } from "react-native";
+import { FlatList } from "react-native";
 import ReviewItem from "./ReviewItem";
 import RepositoryItem from "./RepositoryItem";
 import { ItemSeparator } from "./RepositoryList";
