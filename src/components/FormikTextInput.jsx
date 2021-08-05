@@ -11,11 +11,11 @@ const styles = StyleSheet.create({
     marginTop: 5,
     color: theme.colors.error
   },
-  textField:{
-    borderWidth:1,
-    borderRadius:5,
-    margin:2,
-    padding:5
+  textField: {
+    borderWidth: 1,
+    borderRadius: 5,
+    margin: 2,
+    padding: 5
 
   }
 });

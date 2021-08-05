@@ -23,7 +23,7 @@ const initialValues = {
   password: ''
 };
 
-export const SignInFrom = ({onSubmit}) =>{
+export const SignInFrom = ({ onSubmit }) => {
   return (
     <Formik
       initialValues={initialValues}
@@ -55,7 +55,7 @@ const SignIn = () => {
   };
 
   return (
-    <SignInFrom onSubmit={onSubmit}/>
+    <SignInFrom onSubmit={onSubmit} />
   );
 };
 

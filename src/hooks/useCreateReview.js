@@ -12,7 +12,6 @@ const useCreateReview = () => {
     else {
       payload = await mutate({ variables: { repositoryName, ownerName, rating } });
     }
-    console.log(payload.data);
     return payload;
   };
   return [createReview, result];

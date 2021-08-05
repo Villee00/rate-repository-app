@@ -17,17 +17,17 @@ export const RepositoryListContainer = ({ repositories }) => {
     ? repositories.edges.map((edge) => edge.node)
     : [];
 
-    const renderItem = ({ item }) => (
-      <RepositoryItem isSingle={false} repository={item} />
-    );
-    return (
-      <FlatList
-        data={repositoryNodes}
-        ItemSeparatorComponent={ItemSeparator}
-        keyExtractor={item => item.id}
-        renderItem={renderItem}
-      />
-    );
+  const renderItem = ({ item }) => (
+    <RepositoryItem isSingle={false} repository={item} />
+  );
+  return (
+    <FlatList
+      data={repositoryNodes}
+      ItemSeparatorComponent={ItemSeparator}
+      keyExtractor={item => item.id}
+      renderItem={renderItem}
+    />
+  );
 };
 
 const RepositoryList = () => {

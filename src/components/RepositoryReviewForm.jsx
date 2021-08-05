@@ -48,7 +48,7 @@ const RepositoryReviewForm = () => {
     rating = parseInt(rating);
 
     try {
-      const {data} = await createReview({ repositoryName, ownerName, rating, text });
+      const { data } = await createReview({ repositoryName, ownerName, rating, text });
       history.push(`/repository/${data.createReview.repositoryId}`);
     } catch (e) {
       console.log(e);

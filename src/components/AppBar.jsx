@@ -53,7 +53,7 @@ const AppBar = () => {
 
           <Pressable onPress={signOut}>
             <View>
-            <Text fontWeight="bold" style={styles.menuText}>Signout</Text>
+              <Text fontWeight="bold" style={styles.menuText}>Signout</Text>
             </View>
           </Pressable>
         </ScrollView>
