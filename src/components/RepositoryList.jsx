@@ -25,9 +25,9 @@ export const RepositoryListContainer = ({ repositories, handleChange,orderBy }) 
     <View>
       <Picker selectedValue={orderBy}
         onValueChange={(itemValue) => handleChange(itemValue)}>
-        <Picker.item label="Latest repositories" value="CREATED_AT DESC" />
-        <Picker.item label="Highest rated repositories" value="RATING_AVERAGE DESC" />
-        <Picker.item label="Lowest rated repositories" value="RATING_AVERAGE ASC" />
+        <Picker.Item label="Latest repositories" value="CREATED_AT DESC" />
+        <Picker.Item label="Highest rated repositories" value="RATING_AVERAGE DESC" />
+        <Picker.Item label="Lowest rated repositories" value="RATING_AVERAGE ASC" />
       </Picker>
 
       <FlatList
