@@ -1,6 +1,7 @@
 import { Picker } from '@react-native-picker/picker';
 import React from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
+import { Searchbar } from 'react-native-paper';
 import RepositoryItem from './RepositoryItem';
 
 const styles = StyleSheet.create({
@@ -10,9 +11,9 @@ const styles = StyleSheet.create({
   }
 });
 
-const ItemSeparator = () => <View style={styles.separator} />;
+export const ItemSeparator = () => <View style={styles.separator} />;
 
-const RepositoryListContainer = ({ repositories, handleChange,orderBy }) => {
+export const RepositoryListContainer = ({ repositories, handleChange, orderBy, textFieldChange }) => {
   const repositoryNodes = repositories
     ? repositories.edges.map((edge) => edge.node)
     : [];
@@ -22,11 +23,14 @@ const RepositoryListContainer = ({ repositories, handleChange,orderBy }) => {
   );
   return (
     <View>
+      <Searchbar
+        onChangeText={textFieldChange}
+      />
       <Picker selectedValue={orderBy}
         onValueChange={(itemValue) => handleChange(itemValue)}>
-        <Picker.item label="Latest repositories" value="CREATED_AT ASC" />
-        <Picker.item label="Highest rated repositories" value="RATING_AVERAGE ASC" />
-        <Picker.item label="Lowest rated repositories" value="RATING_AVERAGE DESC" />
+        <Picker.Item label="Latest repositories" value="CREATED_AT DESC" />
+        <Picker.Item label="Highest rated repositories" value="RATING_AVERAGE DESC" />
+        <Picker.Item label="Lowest rated repositories" value="RATING_AVERAGE ASC" />
       </Picker>
 
       <FlatList
@@ -38,5 +42,6 @@ const RepositoryListContainer = ({ repositories, handleChange,orderBy }) => {
     </View>
   );
 };
+
 
 export default RepositoryListContainer;

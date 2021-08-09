@@ -16,8 +16,8 @@ fragment RepositoryDetails on Repository{
 }
 `;
 export const GET_REPOSITORIES = gql`
-query($OrderBy:AllRepositoriesOrderBy!,$OrderDirection:OrderDirection! ){
-  repositories(orderBy:$OrderBy, orderDirection:$OrderDirection) {
+query($OrderBy:AllRepositoriesOrderBy!,$OrderDirection:OrderDirection!, $SearchKeyword: String ){
+  repositories(orderBy:$OrderBy, orderDirection:$OrderDirection, searchKeyword:$SearchKeyword) {
     edges {
       node {
         ...RepositoryDetails
