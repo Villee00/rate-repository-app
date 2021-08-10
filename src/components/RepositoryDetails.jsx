@@ -1,21 +1,29 @@
 import React from "react";
-import { useQuery } from "@apollo/client";
+
 import { useParams } from "react-router-native";
-import { GET_REPOSITORY } from "../graphql/queries";
+
 import { FlatList } from "react-native";
 import ReviewItem from "./ReviewItem";
 import RepositoryItem from "./RepositoryItem";
 import { ItemSeparator } from "./RepositoryList";
+import useRepositoryDetails from "../hooks/useRepositoryDetails";
 
 const RepositoryDetails = () => {
   const { id } = useParams();
-  const { loading, error, data } = useQuery(GET_REPOSITORY, {
-    variables: { id },
-    fetchPolicy: 'cache-and-network'
+  const {repository, fetchMore, loading} = useRepositoryDetails({
+    id,
+    first: 4
   });
 
-  if (loading) return null;
-  const repository = data.repository;
+  if(loading){
+    return null;
+  }
+
+  const handleListEnd = () =>{
+    console.l;
+    fetchMore();
+  };
+
   const reviews = repository.reviews.edges;
   return (
     <FlatList
@@ -24,6 +32,8 @@ const RepositoryDetails = () => {
       keyExtractor={({ node }) => node.id}
       ListHeaderComponent={() => <RepositoryItem repository={repository} isSingle={true} />}
       ItemSeparatorComponent={ItemSeparator}
+      onEndReached={handleListEnd}
+      onEndReachedThreshold={0.5}
     />
   );
 };

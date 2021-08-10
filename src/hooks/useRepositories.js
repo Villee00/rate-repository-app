@@ -15,7 +15,7 @@ const useRepositories = (variables) => {
 
     fetchMore({
       variables: {
-        After: data.repositories.pageInfo.endCursor,
+        after: data.repositories.pageInfo.endCursor,
         ...variables,
       },
     });

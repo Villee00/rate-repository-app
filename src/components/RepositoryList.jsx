@@ -14,10 +14,10 @@ const RepositoryList = () => {
   const vars = orderBy.split(' ');
 
   const { repositories, fetchMore } = useRepositories({
-    First: 8,
-    OrderBy: vars[0],
-    OrderDirection: vars[1],
-    SearchKeyword: filter
+    first: 8,
+    orderBy: vars[0],
+    orderDirection: vars[1],
+    searchKeyword: filter
   });
 
   const onEndReach = () => {
