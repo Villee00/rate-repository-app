@@ -12,15 +12,24 @@ const RepositoryList = () => {
   }, 500);
 
   const vars = orderBy.split(' ');
-  const variables = {
+
+  const { repositories, fetchMore } = useRepositories({
+    First: 8,
     OrderBy: vars[0],
     OrderDirection: vars[1],
     SearchKeyword: filter
+  });
+
+  const onEndReach = () => {
+    fetchMore();
   };
 
-  const { repositories } = useRepositories(variables);
-
-  return <RepositoryListContainer orderBy={orderBy} handleChange={setOrderBy} textFieldChange={debounceText} repositories={repositories} />;
+  return <RepositoryListContainer
+    onEndReach={onEndReach}
+    orderBy={orderBy}
+    handleChange={setOrderBy}
+    textFieldChange={debounceText}
+    repositories={repositories} />;
 };
 
 export default RepositoryList;

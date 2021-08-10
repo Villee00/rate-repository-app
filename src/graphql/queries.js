@@ -16,12 +16,23 @@ fragment RepositoryDetails on Repository{
 }
 `;
 export const GET_REPOSITORIES = gql`
-query($OrderBy:AllRepositoriesOrderBy!,$OrderDirection:OrderDirection!, $SearchKeyword: String ){
-  repositories(orderBy:$OrderBy, orderDirection:$OrderDirection, searchKeyword:$SearchKeyword) {
+query(
+  $OrderBy:AllRepositoriesOrderBy!,
+  $OrderDirection:OrderDirection!, 
+  $SearchKeyword: String, 
+  $First: Int,
+  $After: String){
+  repositories(orderBy:$OrderBy, orderDirection:$OrderDirection, searchKeyword:$SearchKeyword, first: $First, after: $After) {
     edges {
       node {
         ...RepositoryDetails
       }
+      cursor
+    }
+    pageInfo {
+      endCursor
+      startCursor
+      hasNextPage
     }
   }
 }
