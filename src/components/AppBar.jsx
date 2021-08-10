@@ -5,7 +5,7 @@ import Text from './Text';
 import theme from '../theme';
 import { Link, useHistory } from 'react-router-native';
 import { useApolloClient, useQuery } from '@apollo/client';
-import { GET_AUTHORIZEDUSER } from '../graphql/queries';
+import { GET_AUTHORIZED_USER } from '../graphql/queries';
 import useAuthStorage from '../hooks/useAuthStorage';
 
 const styles = StyleSheet.create({
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 });
 
 const AppBar = () => {
-  const { data, loading } = useQuery(GET_AUTHORIZEDUSER);
+  const { data, loading } = useQuery(GET_AUTHORIZED_USER);
   const authStorage = useAuthStorage();
   const apolloClient = useApolloClient();
   const authorizedUser = data ? data.authorizedUser : undefined;
@@ -49,6 +49,10 @@ const AppBar = () => {
 
           <Link to='/reviewForm'>
             <Text fontWeight="bold" style={styles.menuText}>Create review</Text>
+          </Link>
+
+          <Link to='/reviews'>
+            <Text fontWeight="bold" style={styles.menuText}>My reviews</Text>
           </Link>
 
           <Pressable onPress={signOut}>

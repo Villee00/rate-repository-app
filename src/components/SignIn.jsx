@@ -2,7 +2,7 @@ import { Formik } from 'formik';
 import React from 'react';
 import * as yup from 'yup';
 
-import { View, StyleSheet, Button } from 'react-native';
+import { View, Button } from 'react-native';
 import FormikTextInput from './FormikTextInput';
 import useSignIn from '../hooks/useSignIn';
 import { useHistory } from 'react-router-native';

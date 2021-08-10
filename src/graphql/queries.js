@@ -44,14 +44,33 @@ query(
 ${REPOSITORY_DETAILS}
 `;
 
-export const GET_AUTHORIZEDUSER = gql`
-{
+export const GET_AUTHORIZED_USER = gql`
+query getAuthorizedUser($includeReviews: Boolean = false) {
   authorizedUser {
     id
     username
+    reviews @include(if: $includeReviews) {
+      edges {
+        node {
+          repository {
+            fullName
+          }
+          createdAt
+          rating
+          text
+        }
+        cursor
+      }
+      pageInfo {
+        endCursor
+        startCursor
+        hasNextPage
+      }
+    }
   }
 }
 `;
+
 
 export const GET_REPOSITORY = gql`
 query Repository($id: ID!, $first: Int, $after: String){

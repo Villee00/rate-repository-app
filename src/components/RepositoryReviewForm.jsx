@@ -1,10 +1,8 @@
-import { useMutation } from "@apollo/client";
-import { Form, Formik } from "formik";
+import { Formik } from "formik";
 import React from "react";
 import { Button, StyleSheet, View } from "react-native";
 import { useHistory } from "react-router-native";
 import * as yup from 'yup';
-import { CREATE_REVIEW } from "../graphql/mutations";
 import useCreateReview from "../hooks/useCreateReview";
 
 import FormikTextInput from "./FormikTextInput";
@@ -41,7 +39,7 @@ const validation = yup.object().shape({
 
 const RepositoryReviewForm = () => {
   let history = useHistory();
-  const [createReview, result] = useCreateReview();
+  const [createReview] = useCreateReview();
 
   const onSubmit = async (values) => {
     let { repositoryName, ownerName, rating, text } = values;

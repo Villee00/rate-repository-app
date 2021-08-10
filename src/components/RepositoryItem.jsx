@@ -45,7 +45,7 @@ const RepositoryItem = ({ repository, isSingle }) => {
     const onPress = () => {
       Linking.openURL(repository.url);
     };
-    const reviews = repository.reviews.edges;
+
     return (
       <View testID="repositoryItem" style={style.mainContainer}>
         <RepositoryInfo repository={repository} />

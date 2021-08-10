@@ -8,6 +8,7 @@ import theme from './src/theme';
 import RepositoryDetails from './src/components/RepositoryDetails';
 import RepositoryReviewForm from './src/components/RepositoryReviewForm';
 import Signup from './src/components/Singup';
+import UserReviews from './src/components/UserReviews';
 
 const styles = StyleSheet.create({
   container: {
@@ -37,6 +38,9 @@ const Main = () => {
         </Route>
         <Route path='/signup' exact>
           <Signup/>
+        </Route>
+        <Route path='/reviews' exact>
+          <UserReviews/>
         </Route>
       </Switch>
     </View>
