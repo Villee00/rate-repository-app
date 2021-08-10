@@ -28,14 +28,14 @@ const style = StyleSheet.create({
 
 const ReviewItem = ({ review }) => {
   const date = format(new Date(review.createdAt), 'dd-MM-yyyy');
-  const header = review.user ? review.user.username : review.repository.fullName;
+
   return (
     <View style={style.container}>
       <View style={style.rateing}>
         <Text style={style.rateingText}>{review.rating}</Text>
       </View>
       <View style={style.mainInfo}>
-        <Text fontWeight="bold">{header}</Text>
+        <Text fontWeight="bold">{review.user.username}</Text>
         <Text>{date}</Text>
         <Text fontSize="subheading">{review.text}</Text>
 

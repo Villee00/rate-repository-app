@@ -36,3 +36,10 @@ mutation CreateReview(
   }
 }
 `;
+
+export const DELETE_REVIEW = gql`
+mutation DelteReview($id: ID!) {
+  deleteReview(id: $id)
+}
+
+`;

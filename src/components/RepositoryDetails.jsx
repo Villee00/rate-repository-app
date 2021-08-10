@@ -10,17 +10,16 @@ import useRepositoryDetails from "../hooks/useRepositoryDetails";
 
 const RepositoryDetails = () => {
   const { id } = useParams();
-  const {repository, fetchMore, loading} = useRepositoryDetails({
+  const { repository, fetchMore, loading } = useRepositoryDetails({
     id,
     first: 4
   });
 
-  if(loading){
+  if (loading) {
     return null;
   }
 
-  const handleListEnd = () =>{
-    console.l;
+  const handleListEnd = () => {
     fetchMore();
   };
 

@@ -52,8 +52,10 @@ query getAuthorizedUser($includeReviews: Boolean = false) {
     reviews @include(if: $includeReviews) {
       edges {
         node {
+          id
           repository {
             fullName
+            url
           }
           createdAt
           rating
