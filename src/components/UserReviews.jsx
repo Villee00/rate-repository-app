@@ -8,7 +8,7 @@ import { ItemSeparator } from "./RepositoryListContainer";
 import UserReviewsItem from "./UserReviewsItem";
 
 const UserReviews = () => {
-  const [mutate, result] = useMutation(DELETE_REVIEW);
+  const [mutate] = useMutation(DELETE_REVIEW);
   const { reviews, loading, refetch } = useUserReviews();
 
   if (loading) {

@@ -1,12 +1,9 @@
 import React from "react";
-import { Alert, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Text from "./Text";
 import { format } from 'date-fns';
 import { Button } from "react-native-paper";
 import theme from "../theme";
-import { Linking } from "expo";
-import { useMutation } from "@apollo/client";
-import { DELETE_REVIEW } from "../graphql/mutations";
 
 const style = StyleSheet.create({
   container: {
